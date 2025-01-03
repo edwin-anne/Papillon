@@ -65,6 +65,7 @@ export interface AverageOverview {
   subjects: SubjectAverage[];
   overall: GradeValue;
   classOverall: GradeValue;
+  averageView?: boolean;
 }
 
 export interface GradesPerSubject {

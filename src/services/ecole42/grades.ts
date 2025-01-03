@@ -9,7 +9,6 @@ import { log } from "@/utils/logger/logger"; // delete
 
 export const saveEcole42Grades = async (token: string): Promise<{
   grades: Grade[];
-  averages: AverageOverview;
 }> => {
   try {
     const userData = await axios.get("https://api.intra.42.fr/v2/me", {
@@ -21,17 +20,6 @@ export const saveEcole42Grades = async (token: string): Promise<{
     const projectsUsers = userData.data.projects_users;
 
     const gradesList: Grade[] = [];
-    const averages: AverageOverview = {
-      classOverall: {
-        value: null,
-        disabled: true,
-      },
-      overall: {
-        value: null,
-        disabled: true,
-      },
-      subjects: [],
-    };
 
     projectsUsers.forEach((project: any) => {
       const projectName = project.project.name;
@@ -71,22 +59,11 @@ export const saveEcole42Grades = async (token: string): Promise<{
     });
 
     log("Fetched data:" + JSON.stringify(projectsUsers, null, 2), "ecole42"); // delete
-    return { grades: gradesList, averages: averages };
+    return { grades: gradesList};
   } catch (e) {
     console.error(e);
     return {
       grades: [],
-      averages: {
-        classOverall: {
-          value: null,
-          disabled: true,
-        },
-        overall: {
-          value: null,
-          disabled: true,
-        },
-        subjects: [],
-      },
     };
   }
 };
