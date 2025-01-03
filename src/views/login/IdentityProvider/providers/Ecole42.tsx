@@ -9,6 +9,7 @@ import uuid from "@/utils/uuid-v4";
 import { useTheme } from "@react-navigation/native";
 import PapillonSpinner from "@/components/Global/PapillonSpinner";
 import { NativeText } from "@/components/Global/NativeComponents";
+import { log } from "@/utils/logger/logger"; // delete
 
 const API_BASE_URL = "https://api.intra.42.fr/v2";
 const CLIENT_ID = "u-s4t2ud-6c703ff3b5ae5d7ef133bce004759ef20c88497db5802a6a907004ae27b5fa36";
@@ -35,6 +36,8 @@ const Ecole42_Login: Screen<"Ecole42_Login"> = ({ navigation }) => {
     }
 
     const data = await response.json();
+    log(token, "ecole42"); // delete
+    data.token = token;
     return data;
   }, []);
 
@@ -65,12 +68,13 @@ const Ecole42_Login: Screen<"Ecole42_Login"> = ({ navigation }) => {
       setLoadingText("Récupération des informations...");
 
       const studentInfo = await fetchStudentInfo(access_token);
+      log("Fetched data:" + JSON.stringify(studentInfo, null, 2), "ecole42"); // delete
 
       const localAccount: LocalAccount = {
         authentication: undefined,
         instance: undefined,
         identityProvider: {
-          identifier: "ecole_42",
+          identifier: "ecole-42",
           name: "École 42",
           rawData: studentInfo
         },
@@ -83,7 +87,7 @@ const Ecole42_Login: Screen<"Ecole42_Login"> = ({ navigation }) => {
           first: studentInfo.first_name,
           last: studentInfo.last_name,
         },
-        className: studentInfo.campus.name,
+        className: "42 " + studentInfo.campus[0].name,
         schoolName: "École 42",
         personalization: await defaultPersonalization({
           profilePictureB64: await convertImageToBase64(studentInfo.image.versions.small),

@@ -18,7 +18,13 @@ export async function updateNewsInCache <T extends Account> (account: T): Promis
       break;
     }
     case AccountService.Local: {
-      useNewsStore.getState().updateInformations([]);
+      if (account.identityProvider.identifier == "ecole-42") {
+        const { getNews } = await import("./ecole42/news");
+        const informations = await getNews(Number(account.identityProvider.rawData.id), String(account.identityProvider.rawData.token), String(account.className));
+        useNewsStore.getState().updateInformations(informations);
+      } else {
+        useNewsStore.getState().updateInformations([]);
+      }
       break;
     }
     case AccountService.Skolengo: {
