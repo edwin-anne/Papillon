@@ -7,6 +7,7 @@ import UnivRennes2_Login from "@/views/login/IdentityProvider/providers/UnivRenn
 import UnivSorbonneParisNord_login from "@/views/login/IdentityProvider/providers/UnivSorbonneParisNord";
 //import UnivUphf_Login from "@/views/login/IdentityProvider/providers/UnivUphf";
 import { UnivIUTLannion_Login } from "@/views/login/IdentityProvider/providers/UnivIUTLannion";
+import Ecole42_Login from "@/views/login/IdentityProvider/providers/Ecole42";
 import Muli_Login from "@/views/login/IdentityProvider/providers/Multi";
 
 export default [
@@ -38,6 +39,11 @@ export default [
   createScreen("UnivSorbonneParisNord_login", UnivSorbonneParisNord_login, {
     headerBackVisible: true,
     headerTitle: "Université Sorbonne Paris Nord",
+  }),
+
+  createScreen("Ecole42_Login", Ecole42_Login, {
+    headerBackVisible: true,
+    headerTitle: "École 42",
   }),
 
   createScreen("Multi_Login", Muli_Login, {

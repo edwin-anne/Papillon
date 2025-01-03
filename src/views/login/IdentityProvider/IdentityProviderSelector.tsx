@@ -71,6 +71,13 @@ const IdentityProviderSelector: Screen<"IdentityProviderSelector"> = ({ navigati
       image: require("@/../assets/images/service_uspn.png"),
       navigate: () => navigation.navigate("UnivSorbonneParisNord_login"),
     },
+    {
+      name: "ecole_42",
+      title: "École 42",
+      description: "Utilisez votre compte Intra 42 pour vous connecter",
+      image: require("@/../assets/images/service_ecole42.png"),
+      navigate: () => navigation.navigate("Ecole42_Login"),
+    },
   ];
 
   return (

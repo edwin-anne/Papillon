@@ -66,6 +66,7 @@ export type RouteParameters = {
   UnivLimoges_Login: undefined;
   UnivSorbonneParisNord_login: undefined;
   UnivUphf_Login: undefined;
+  Ecole42_Login: undefined;
   BackgroundIdentityProvider: undefined;
   BackgroundIUTLannion:
     | { url?: string; username: string; password: string; firstLogin?: boolean }
