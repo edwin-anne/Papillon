@@ -96,6 +96,17 @@ export async function updateGradesAndAveragesInCache <T extends Account> (accoun
           grades = data.grades;
           averages = data.averages;
         }
+        if (account.identityProvider.identifier == "ecole-42") {
+          const { saveEcole42Grades } = await import("./ecole42/grades");
+          const data = await saveEcole42Grades(String(account.identityProvider.rawData.token));
+
+          grades = data.grades;
+          averages = averages = {
+            subjects: [],
+            overall: { value: 0, disabled: true },
+            classOverall: { value: 0, disabled: true }
+          };
+        }
         else {
           grades = [];
           averages = {
