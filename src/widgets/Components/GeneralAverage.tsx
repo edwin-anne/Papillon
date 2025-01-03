@@ -70,6 +70,10 @@ const GeneralAverageWidget = forwardRef(
       setHidden(true);
     }
 
+    if (averages[defaultPeriod]?.averageView) {
+      setHidden(true);
+    }
+
     return (
       <>
         <View
