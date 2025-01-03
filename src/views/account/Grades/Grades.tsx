@@ -215,7 +215,9 @@ const Grades: Screen<"Grades"> = ({ route, navigation }) => {
 
               {!isLoading &&
 							grades[selectedPeriod] &&
-							grades[selectedPeriod].length > 1 && (
+							grades[selectedPeriod].length > 1 &&
+              !averages[selectedPeriod].overall.disabled &&
+              !averages[selectedPeriod].classOverall.disabled && (
                 <Reanimated.View
                   layout={animPapillon(LinearTransition)}
                   entering={FadeInUp.duration(200)}
