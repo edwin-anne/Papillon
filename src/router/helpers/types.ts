@@ -80,7 +80,6 @@ export type RouteParameters = {
   // account.index
   Home: undefined;
   HomeScreen?: { onboard: boolean };
-  NoteReaction: undefined;
 
   Lessons?: { outsideNav?: boolean };
   LessonsImportIcal: {
@@ -102,6 +101,7 @@ export type RouteParameters = {
     grade: Grade;
     allGrades?: Grade[];
   };
+  GradeReaction: { grade: Grade };
 
   Evaluation: { outsideNav?: boolean };
   EvaluationDocument: {
@@ -133,6 +133,7 @@ export type RouteParameters = {
   SettingsAddons: undefined;
   SettingsDevLogs: undefined;
   SettingsDonorsList: undefined;
+  SettingsReactions: undefined;
   SettingsApparence: undefined;
 
   Menu?: undefined;
